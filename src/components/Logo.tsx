@@ -31,12 +31,19 @@ const Logo = () => {
           boxShadow: '0 0 32px rgba(255,204,0,0.25), 0 0 64px rgba(204,0,102,0.15)',
         }}
       >
-        {/* Photo */}
+        {/* Photo
         <div className="w-full h-full rounded-full overflow-hidden">
           <img
             src="fiu-logo.png"
             alt="Avatar"
             className="w-full h-full object-cover rounded-full"
+          />
+        </div> */}
+        <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-white">
+          <img
+            src="fiu-logo.png"
+            alt="Avatar"
+            className="max-w-full max-h-full object-contain"
           />
         </div>
 
