@@ -35,15 +35,15 @@ const Index = () => {
   const [resetTrigger, setResetTrigger] = useState(0);
 
   const projects = [
-    { id: 1,  name: 'Resume Analyzer', icon: '🤖', path: '/resume-analyzer',  gradient: BUBBLE_GRADIENTS[0] },
-    { id: 2,  name: 'BuildLLM',        icon: '🤖', path: '/buildLLM',         gradient: BUBBLE_GRADIENTS[1] },
-    { id: 7,  name: 'Hackathons',      icon: '🏅', path: '/hackathons',       gradient: BUBBLE_GRADIENTS[2] },
-    { id: 8,  name: 'Signifi',         img: 'images/signifi-logo.png', path: '/signifi', gradient: BUBBLE_GRADIENTS[3] },
-    { id: 9,  name: 'Cattrax',         icon: '🚂', path: '/cattrax',          gradient: BUBBLE_GRADIENTS[4] },
-    { id: 10, name: 'Work Exp',        icon: '💼', path: '/work-experience',  gradient: BUBBLE_GRADIENTS[5] },
-    { id: 11, name: 'Pluto',           icon: '🌑', path: '/pluto',            gradient: BUBBLE_GRADIENTS[6] },
-    { id: 12, name: 'Neuroplay',       icon: '🧠', path: '/neuroplay',        gradient: BUBBLE_GRADIENTS[7] },
-    { id: 13, name: 'Morganizer',      img: 'images/morganizer.png', path: '/morganizer', gradient: BUBBLE_GRADIENTS[8] },
+    { id: 1,  name: 'Sprinternship', url: 'https://webs.cs.fiu.edu/sprinternship/', gradient: BUBBLE_GRADIENTS[0] },
+    { id: 2,  name: 'Partners',      url: 'https://webs.cs.fiu.edu/sprinternship/sprinternship-industry/', gradient: BUBBLE_GRADIENTS[1] },
+    { id: 3,  name: 'Sistas',        url: 'https://webs.cs.fiu.edu/sprinternship/sistas/', gradient: BUBBLE_GRADIENTS[2] },
+    { id: 4,  name: 'Career Roadmap',url: 'https://webs.cs.fiu.edu/sprinternship/roadmap/', gradient: BUBBLE_GRADIENTS[3] },
+    { id: 5,  name: 'Research',      url: 'https://webs.cs.fiu.edu/sprinternship/research/', gradient: BUBBLE_GRADIENTS[4] },
+    // { id: 6, name: '/',             url: '/', gradient: BUBBLE_GRADIENTS[5] },
+    // { id: 7, name: '/',             url: '/', gradient: BUBBLE_GRADIENTS[6] },
+    // { id: 8, name: '/',             url: '/', gradient: BUBBLE_GRADIENTS[7] },
+    // { id: 9, name: '/',             url: '/', gradient: BUBBLE_GRADIENTS[8] },
   ];
 
   useEffect(() => {
@@ -62,7 +62,14 @@ const Index = () => {
     generateBubblePositions();
   }, []);
 
-  const handleBubbleClick = (path) => navigate(path);
+  // const handleBubbleClick = (path) => navigate(path);
+  const handleBubbleClick = (project) => {
+  if (project.url) {
+    window.open(project.url, '_blank', 'noopener,noreferrer');
+  } else if (project.path) {
+    navigate(project.path);
+  }
+};
 
   return (
     <div
@@ -182,7 +189,8 @@ const Index = () => {
         <FloatingBubble
           key={`${bubble.id}-${bubble.x}-${bubble.y}`}
           project={bubble}
-          onClick={() => handleBubbleClick(bubble.path)}
+          // onClick={() => handleBubbleClick(bubble.path)}
+          onClick={() => handleBubbleClick(bubble)}
         />
       ))}
 
